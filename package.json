@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "build": "echo \"Building project...\""
+    "test": "jest"
   },
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
 }
