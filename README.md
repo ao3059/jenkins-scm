@@ -18,15 +18,18 @@ Exposing the port on which the application will run (port 80).
 package.json: Contains the metadata for the Node.js project. It defines dependencies (such as Jest for testing) and scripts for tasks like running tests.
 README.md: This file, documenting the project structure and the steps taken to implement and run the project.
 Steps for Implementation
+
 1. Install Jenkins on a Server
 Set up Jenkins on a dedicated server to automate CI/CD tasks.
 Install required Jenkins plugins (Git, Docker, etc.).
+
 2. Set Up GitHub Integration
 Create a public GitHub repository.
 Configure Jenkins to pull the source code from the GitHub repository:
 bash
 
 https://github.com/ao3059/jenkins-scm.git
+
 3. Set Up the Jenkins Pipeline
 Created a Jenkinsfile with the following stages:
 Connect to GitHub: Clones the repository from GitHub.
@@ -35,6 +38,7 @@ Install Dependencies: Installs project dependencies using npm install.
 Run Tests: Executes the tests using Jest.
 Build Docker Image: Builds a Docker image for the application using the Dockerfile.
 Run Docker Container: Runs the built Docker container to serve the application.
+
 4. Docker Setup
 Dockerfile was created with the following:
 Pulls the base Node.js image node:18.
@@ -50,11 +54,15 @@ Ran the Docker container using:
 bash
 
 docker run -d -p 8081:80 my-ecommerce-app
+
+
 5. Testing
 Unit Testing: The pipeline uses Jest for running tests. Tests are executed in the Run Tests stage.
 Challenges:
 Node.js Version Mismatch: Jenkins was using the wrong Node.js version. This was resolved by configuring nvm to install and switch to Node.js version 18.x.
 Missing or Failing Tests: Initially, tests failed due to missing files. The issues were resolved by adding test files or using appropriate Jest configurations to handle missing tests.
+
+
 6. Deploying the Application
 After the Docker container was successfully built, it was run to expose the application at http://localhost:8081.
 Verified deployment by accessing the application, which displayed the message:
